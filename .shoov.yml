@@ -1,0 +1,22 @@
+before_script:
+  - cd behat
+  # Instead of composer install, we save time by getting
+  # a gzipped file with the vendor and bin directories.
+  - tar zxf behat-vendor.tar.gz
+  - cp behat.local.yml.example behat.local.yml
+  - cd -
+
+  - cd ui-tests
+  - npm install
+  - cd -
+
+script:
+  # Functional testing.
+  - cd behat
+  - ./bin/behat --tags=~wip
+  - cd -
+
+  # Visual regression testing.
+  - cd ui-tests
+  - PROVIDER_PREFIX=browserstack SELECTED_CAPS=chrome mocha
+  - PROVIDER_PREFIX=browserstack SELECTED_CAPS=ie11 mocha
