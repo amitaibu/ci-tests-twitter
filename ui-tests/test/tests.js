@@ -56,14 +56,13 @@ describe('Twitter visual regression tests', function() {
           // Remove the tweets as they change often.
           '.ProfileTweet',
           // Hide the signup modal in case it pops-up.
-          '.modal-enabled',
-          '#signup-dialog'
-
+          '#signup-dialog',
+          '.modal-enabled .modal-overlay'
         ],
-        // Hide
+        // Exclude (place a black rectangle).
         exclude: [
           '.ProfileNav-value',
-          '.SidebarCommonModules .Trends',
+          '.Trends',
           '.PhotoRail-headingText',
           '.PhotoRail-mediaBox .media-thumbnail'
         ]
