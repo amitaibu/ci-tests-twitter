@@ -32,9 +32,9 @@ var caps = selectedCaps ? capsConfig[selectedCaps] : undefined;
 var providerPrefix = process.env.PROVIDER_PREFIX ? process.env.PROVIDER_PREFIX + '-' : '';
 var testName = selectedCaps ? providerPrefix + selectedCaps : providerPrefix + 'default';
 
-var url = 'http://www.gizra.com'
+var url = 'https://twitter.com';
 
-describe('Gizra.com visual regression tests', function() {
+describe('Twitter visual regression tests', function() {
 
   this.timeout(99999999);
   var client = {};
@@ -47,13 +47,20 @@ describe('Gizra.com visual regression tests', function() {
     shoovWebdrivercss.after(done);
   });
 
-  it('should show a blog post page',function(done) {
+  it('should show a a user page',function(done) {
     client
-      .url(url + '/content/cross-browser-visual-regression-with-shoov/')
+      .url(url + '/gizra_drupal')
       .webdrivercss(testName, {
-        name: 'blog-post-page',
-        // Hide Disqus comments.
-        remove: '#disqus_thread'
+        name: 'user-page',
+        // Remove the tweets as they change often.
+        remove: '.ProfileTweet',
+        // Hide
+        exclude: [
+          '.ProfileNav-value',
+          '.SidebarCommonModules .Trends',
+          '.PhotoRail-headingText',
+          '.PhotoRail-mediaBox .media-thumbnail'
+        ]
       }, shoovWebdrivercss.processResults)
       .call(done);
   });
