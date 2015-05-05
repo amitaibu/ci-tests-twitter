@@ -47,13 +47,19 @@ describe('Twitter visual regression tests', function() {
     shoovWebdrivercss.after(done);
   });
 
-  it('should show a a user page',function(done) {
+  it('should show a user page',function(done) {
     client
       .url(url + '/gizra_drupal')
       .webdrivercss(testName, {
         name: 'user-page',
-        // Remove the tweets as they change often.
-        remove: '.ProfileTweet',
+        remove: [
+          // Remove the tweets as they change often.
+          '.ProfileTweet',
+          // Hide the signup modal in case it pops-up.
+          '.modal-enabled',
+          '#signup-dialog'
+
+        ],
         // Hide
         exclude: [
           '.ProfileNav-value',
