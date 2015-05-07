@@ -57,7 +57,9 @@ describe('Twitter visual regression tests', function() {
           '.ProfileTweet',
           // Hide the signup modal in case it pops-up.
           '#signup-dialog',
-          '.modal-enabled .modal-overlay'
+          '.modal-enabled .modal-overlay',
+          // Hide the spinner
+          '.GridTimeline .has-more-items .spinner'
         ],
         // Exclude (place a black rectangle).
         exclude: [
