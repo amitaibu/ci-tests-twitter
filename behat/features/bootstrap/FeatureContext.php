@@ -23,8 +23,7 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
       // No data is required (e.g. the user doesn't have favorites)
       return;
     }
-
-
+    
     $locator = ".ProfileNav-list .ProfileNav-item--$type .ProfileNav-value";
 
     // Get the value from the page.
