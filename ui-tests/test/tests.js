@@ -52,6 +52,7 @@ describe('Twitter visual regression tests', function() {
       .url(url + '/gizra_drupal')
       .webdrivercss(testName, {
         name: 'user-page',
+        elem: '#page-container',
         remove: [
           // Remove the tweets as they change often.
           '.ProfileTweet',
@@ -64,7 +65,7 @@ describe('Twitter visual regression tests', function() {
         // Exclude (place a black rectangle).
         exclude: [
           '.ProfileNav-value',
-          '.Trends',
+          '.MoveableModule',
           '.PhotoRail-headingText',
           '.PhotoRail-mediaBox .media-thumbnail'
         ]
